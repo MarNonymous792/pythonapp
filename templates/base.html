@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="IE-Edge" />
+    <title>MyPythonApp</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/input.css') }}"
+    />
+    <script src="https://kit.fontawesome.com/d972c1f784.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="w3-card-4 w3-blue w3-padding w3-bar ">
+      <span class="w3-text-bold w3-text-yellow w3-bar-item">My App</span>
+        {%block logout%}
+        {%endblock%}
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <hr>
+    <center style="font-size: smaller;">
+        <p>Copyright &copy; dacuamarceugene 2026</p>
+    </center>
+  </body>
+</html>

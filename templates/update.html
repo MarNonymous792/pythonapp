@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block content %}
+
+<fieldset style="width: 30%; margin: auto; margin-top: 16px">
+  <legend><b>UPDATE STUDENT</b></legend>
+  {% for student in students %}
+  <form action="/update" method="POST">
+    <p>
+      <label>IDNO</label>
+      <input
+        type="text"
+        name="idno"
+        id="idno"
+        class="w3-input w3-border"
+        value="{{ student[1] }}"
+        readonly
+      />
+    </p>
+    <p>
+      <label>LASTNAME</label>
+      <input
+        type="text"
+        name="last_name"
+        id="last_name"
+        class="w3-input w3-border"
+        value="{{ student[3] }}"
+        required
+      />
+    </p>
+    <p>
+      <label>FIRSTNAME</label>
+      <input
+        type="text"
+        name="first_name"
+        id="first_name"
+        class="w3-input w3-border"
+        value="{{ student[2] }}"
+        required
+      />
+    </p>
+    <p>
+      <label>COURSE</label>
+      <select name="course" id="course" class="w3-select w3-border">
+        <option value="" disabled>Choose your option</option>
+        <option value=" BSIT" {% if student[4]=="BSIT" %}selected{% endif %}>
+          BSIT
+        </option>
+        <option value="BSCS" {% if student[4]=="BSCS" %}selected{% endif %}>
+          BSCS
+        </option>
+      </select>
+    </p>
+    <p>
+      <label>LEVEL</label>
+      <select name="level" id="level" class="w3-select w3-border">
+        <option value="" disabled>Choose your option</option>
+        <option value="1" {% if student[5]==1 %}selected{% endif %}>
+          1
+        </option>
+        <option value="2" {% if student[5]==2 %}selected{% endif %}>
+          2
+        </option>
+        <option value="3" {% if student[5]==3 %}selected{% endif %}>
+          3
+        </option>
+        <option value="4" {% if student[5]==4 %}selected{% endif %}>
+          4
+        </option>
+      </select>
+    </p>
+    <p class="w3-right">
+      <input type="submit" value="SAVE" class="w3-blue w3-button" />
+      <a class="w3-red w3-button" href="/main">CANCEL</a>
+    </p>
+  </form>
+  {% endfor %}
+</fieldset>
+
+{% endblock %} {%block logout %}
+<a href="/logout" class="w3-btn w3-padding w3-round w3-bar-item w3-right"
+  >Logout</a
+>
+{%endblock%}

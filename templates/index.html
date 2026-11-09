@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% block content %}
+
+<div
+  class="w3-padding w3-container w3-margin-top w3-blue w3-card-4 w3-round-large"
+  style="width: 30%; margin: auto"
+>
+  <h3 class="w3-padding w3-text-bold">Login</h3>
+
+  <form action="/login" method="POST" class="w3-container w3-padding">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <span
+      class="w3-{{ category }} w3-padding w3-animate-fade"
+      style="
+        font-size: smaller;
+        width: 100%;
+        margin: auto;
+        display: block;
+        opacity: 0;
+      "
+      >{{ message }}</span
+    >
+    {% endfor %} {% endif %} {% endwith %}
+    <p>
+      <label for="">Email</label>
+      <input type="email" name="email" id="email" class="w3-input" />
+    </p>
+
+    <p>
+      <label for="">Password</label>
+      <div style="position: relative;">
+        <input type="password" name="password" id="password" class="w3-input" />
+        <i class="fa-solid fa-eye w3-text-blue" style="position: absolute;top: 12.5px;right: 10px;cursor: pointer;" id="showpass"></i>
+      </div>
+      
+    </p>
+
+    <p>
+      <input
+        type="submit"
+        value="SUBMIT"
+        class="w3-button w3-round w3-right w3-border w3-green"
+      />
+    </p>
+  </form>
+</div>
+
+<script>
+    const showbtn = document.getElementById('showpass')
+    const passfield = document.getElementById('password')
+    let state = true
+    showbtn.addEventListener('click', () =>{
+        if (state){
+            showbtn.classList.remove('fa-eye')
+            showbtn.classList.add('fa-eye-slash')
+            passfield.setAttribute('type','text')
+            state = false;
+        }else{
+            showbtn.classList.remove('fa-eye-slash')
+            showbtn.classList.add('fa-eye')
+            passfield.setAttribute('type','password')
+            state = true
+        }
+    });
+</script>
+
+{% endblock %}
