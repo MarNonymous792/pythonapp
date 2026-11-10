@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <div
-  class="w3-padding w3-container w3-margin-top w3-blue w3-card-4 w3-round-large"
+  class="w3-padding w3-container w3-margin-top w3-blue w3-card-4 w3-round-large  w3-animate-top" 
   style="width: 30%; margin: auto"
 >
   <h3 class="w3-padding w3-text-bold">Login</h3>
@@ -34,12 +34,13 @@
       </div>
       
     </p>
-
+    <p class="w3-container w3-right"><a href="/signup" class="w3-padding w3-btn w3-text-smaller">Sign In</a></p>
     <p>
       <input
         type="submit"
-        value="SUBMIT"
-        class="w3-button w3-round w3-right w3-border w3-green"
+        value="LOGIN"
+        class="w3-button w3-round w3-border w3-green"
+        style="width: 100%; margin: auto;"
       />
     </p>
   </form>
@@ -62,6 +63,8 @@
             state = true
         }
     });
+
+    
 </script>
 
 {% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% block content %}
+
+<div
+  class="w3-padding w3-container w3-margin-top w3-blue w3-card-4 w3-round-large w3-animate-top"
+  style="width: 30%; margin: auto"
+>
+  <h3 class="w3-padding w3-text-bold">Sign up</h3>
+
+  <form  id="registerForm" action='/register' method="POST" class="w3-container w3-padding">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <span
+      id='flash-message'
+      class="w3-{{ category }} w3-padding w3-animate-fade"
+      style="
+        font-size: smaller;
+        width: 100%;
+        margin: auto;
+        display: block;
+        opacity: 0;
+      "
+      >{{ message }}</span
+    >
+    {% endfor %} {% endif %} {% endwith %}
+    <p>
+      <label for="">Username</label>
+      <input type="text" name="username" id="username" class="w3-input w3-border " />
+    </p>
+    <p>
+      <label for="">Email</label>
+      <input type="email" name="email" id="email" class="w3-input w3-border" />
+    </p>
+
+    <p>
+      <label for="">Password</label>
+      <div style="position: relative;">
+        <input type="password" name="password" id="password" class="w3-input w3-border" />
+        <i class="fa-solid fa-eye w3-text-blue" style="position: absolute;top: 12.5px;right: 10px;cursor: pointer;" id="showpass"></i>
+      </div>
+      
+    </p>
+
+    <p>
+      <label for="">Confirm Password</label>
+      <div style="position: relative;">
+        <input type="password" name="confirmfield" id="confirmfield" class="w3-input w3-border" />
+        <i class="fa-solid fa-eye w3-text-blue" style="position: absolute;top: 12.5px;right: 10px;cursor: pointer;" id="showconfirm"></i>
+      </div>
+      
+    </p>
+   
+    <p>
+      <a
+        href="/"
+        class="w3-button w3-round w3-right w3-border w3-red"
+      >Cancel</a>
+    </p>
+     <p>
+      <input
+        type="submit"
+        value="Sign up"
+        class="w3-button w3-round w3-right w3-border w3-green w3-margin-right"
+        id="submit"
+      />
+    </p>
+  </form>
+</div>
+
+<script>
+    const showbtn = document.getElementById('showpass')
+    const showconfirm = document.getElementById('showconfirm')
+
+    const passfield = document.getElementById('password')
+    const confirmfield = document.getElementById('confirmfield')
+
+    let passfieldState = true;
+    let confirmfieldState = true;
+
+    showbtn.addEventListener('click', () =>{
+      if (passfieldState){
+              showbtn.classList.remove('fa-eye')
+              showbtn.classList.add('fa-eye-slash')
+              passfield.setAttribute('type','text')
+              passfieldState = false;
+          }else{
+              showbtn.classList.remove('fa-eye-slash')
+              showbtn.classList.add('fa-eye')
+              passfield.setAttribute('type','password')
+              passfieldState = true
+          }
+      });
+      
+      showconfirm.addEventListener('click', () =>{
+        if (confirmfieldState){
+            showconfirm.classList.remove('fa-eye')
+            showconfirm.classList.add('fa-eye-slash')
+            confirmfield.setAttribute('type','text')
+            confirmfieldState = false;
+        }else{
+            showconfirm.classList.remove('fa-eye-slash')
+            showconfirm.classList.add('fa-eye')
+            confirmfield.setAttribute('type','password')
+            confirmfieldState = true;
+        }
+    });
+</script>
+
+{% endblock %}
